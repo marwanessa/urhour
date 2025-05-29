@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, MapPin, Bell, User, PlusCircle } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 interface HeaderProps {
   toggleSidebar: () => void;
@@ -37,6 +38,8 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
           </nav>
 
           <div className="flex items-center space-x-4">
+            <LanguageSwitcher />
+            
             <Link to="/create-task" className="hidden md:flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
               <PlusCircle className="h-4 w-4 mr-1" />
               Post Task
@@ -69,5 +72,3 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
     </header>
   );
 };
-
-export default Header;
