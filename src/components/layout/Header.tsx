@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, MapPin, Bell, User, PlusCircle } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslation } from '../../translations';
 
 interface HeaderProps {
   toggleSidebar: () => void;
@@ -10,6 +11,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   const { user, isAuthenticated } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <header className="bg-white shadow-sm">
@@ -30,10 +32,10 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
 
           <nav className="hidden md:flex space-x-8">
             <Link to="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
-              Home
+              {t('home')}
             </Link>
             <Link to="/map" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
-              Task Map
+              {t('taskMap')}
             </Link>
           </nav>
 
@@ -42,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
             
             <Link to="/create-task" className="hidden md:flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
               <PlusCircle className="h-4 w-4 mr-1" />
-              Post Task
+              {t('postTask')}
             </Link>
             
             {isAuthenticated ? (
@@ -59,10 +61,10 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
             ) : (
               <div className="flex items-center space-x-2">
                 <Link to="/login" className="text-sm font-medium text-blue-600 hover:text-blue-800">
-                  Log in
+                  {t('logIn')}
                 </Link>
                 <Link to="/signup" className="text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-md">
-                  Sign up
+                  {t('signUp')}
                 </Link>
               </div>
             )}
@@ -73,4 +75,4 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   );
 };
 
-export default Header
+export default Header;

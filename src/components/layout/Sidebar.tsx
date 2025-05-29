@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { X, Home, Map, UserCircle, Settings, HelpCircle, Mail, FileText } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useTranslation } from '../../translations';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -10,6 +11,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const { isAuthenticated, user } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <div 
@@ -37,7 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
             onClick={() => toggleSidebar()}
           >
             <Home className="mr-3 h-5 w-5 text-gray-500" />
-            Home
+            {t('home')}
           </Link>
           
           <Link 
@@ -46,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
             onClick={() => toggleSidebar()}
           >
             <Map className="mr-3 h-5 w-5 text-gray-500" />
-            Task Map
+            {t('taskMap')}
           </Link>
           
           {isAuthenticated && (
@@ -57,7 +59,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                 onClick={() => toggleSidebar()}
               >
                 <UserCircle className="mr-3 h-5 w-5 text-gray-500" />
-                Profile
+                {t('profile')}
               </Link>
               
               <Link 
@@ -66,7 +68,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                 onClick={() => toggleSidebar()}
               >
                 <Mail className="mr-3 h-5 w-5 text-gray-500" />
-                Messages
+                {t('messages')}
               </Link>
               
               <Link 
@@ -75,7 +77,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                 onClick={() => toggleSidebar()}
               >
                 <FileText className="mr-3 h-5 w-5 text-gray-500" />
-                My Tasks
+                {t('myTasks')}
               </Link>
             </>
           )}
@@ -88,7 +90,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
             onClick={() => toggleSidebar()}
           >
             <HelpCircle className="mr-3 h-5 w-5 text-gray-500" />
-            Help & Support
+            {t('help')}
           </Link>
           
           {isAuthenticated && (
@@ -98,7 +100,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
               onClick={() => toggleSidebar()}
             >
               <Settings className="mr-3 h-5 w-5 text-gray-500" />
-              Settings
+              {t('settings')}
             </Link>
           )}
         </div>
