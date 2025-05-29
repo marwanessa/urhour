@@ -1,3 +1,5 @@
+import { useLanguage } from '../contexts/LanguageContext';
+
 export const translations = {
   en: {
     // Navigation
