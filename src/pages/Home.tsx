@@ -4,9 +4,11 @@ import { Search, MapPin, DollarSign, MessageCircle } from 'lucide-react';
 import TaskList from '../components/tasks/TaskList';
 import Button from '../components/ui/Button';
 import { useTask } from '../contexts/TaskContext';
+import { useTranslation } from '../translations';
 
 const Home: React.FC = () => {
   const { tasks, loading } = useTask();
+  const { t } = useTranslation();
   
   return (
     <div className="space-y-12">
@@ -22,12 +24,12 @@ const Home: React.FC = () => {
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
             <Link to="/create-task">
               <Button size="lg" variant="primary" fullWidth>
-                Post a Task
+                {t('postTask')}
               </Button>
             </Link>
             <Link to="/map">
               <Button size="lg" variant="outline" fullWidth>
-                Find Tasks Nearby
+                {t('taskMap')}
               </Button>
             </Link>
           </div>
@@ -36,7 +38,7 @@ const Home: React.FC = () => {
       
       {/* Categories Section */}
       <section>
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Popular Categories</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('popularCategories')}</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {categories.map(category => (
             <Link
@@ -47,8 +49,8 @@ const Home: React.FC = () => {
               <div className="h-12 w-12 mx-auto mb-2 rounded-full bg-blue-100 flex items-center justify-center">
                 {category.icon}
               </div>
-              <h3 className="font-medium text-gray-900">{category.name}</h3>
-              <p className="text-xs text-gray-500 mt-1">{category.count} tasks</p>
+              <h3 className="font-medium text-gray-900">{t(category.name.toLowerCase())}</h3>
+              <p className="text-xs text-gray-500 mt-1">{category.count} {t('tasks')}</p>
             </Link>
           ))}
         </div>
@@ -58,7 +60,7 @@ const Home: React.FC = () => {
       <section className="bg-white rounded-lg shadow-sm p-6">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-xl font-semibold text-gray-900 mb-4 text-center">
-            Search for tasks in your area
+            {t('searchTasks')}
           </h2>
           <div className="flex items-center">
             <div className="relative flex-grow">
@@ -68,7 +70,7 @@ const Home: React.FC = () => {
               <input
                 type="text"
                 className="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 pr-12 py-3 sm:text-sm border-gray-300 rounded-l-md"
-                placeholder="Search tasks or keywords..."
+                placeholder={t('search')}
               />
             </div>
             <div className="relative">
@@ -78,11 +80,11 @@ const Home: React.FC = () => {
               <input
                 type="text"
                 className="focus:ring-blue-500 focus:border-blue-500 block w-40 sm:w-64 pl-10 py-3 sm:text-sm border-gray-300 border-l-0"
-                placeholder="Location"
+                placeholder={t('location')}
               />
             </div>
             <button className="bg-blue-600 text-white px-4 py-3 rounded-r-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-              Search
+              {t('search')}
             </button>
           </div>
         </div>
@@ -95,13 +97,13 @@ const Home: React.FC = () => {
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
           </div>
         ) : (
-          <TaskList tasks={tasks.slice(0, 6)} title="Recent Tasks" />
+          <TaskList tasks={tasks.slice(0, 6)} title={t('recentTasks')} />
         )}
         
         <div className="mt-8 text-center">
           <Link to="/tasks">
             <Button variant="outline">
-              View All Tasks
+              {t('viewDetails')}
             </Button>
           </Link>
         </div>
@@ -109,15 +111,15 @@ const Home: React.FC = () => {
       
       {/* How It Works Section */}
       <section className="bg-gray-50 rounded-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">How It Works</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">{t('howItWorks')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center">
             <div className="h-16 w-16 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center">
               <span className="text-blue-600 text-2xl font-bold">1</span>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Post a Task</h3>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">{t('postTask')}</h3>
             <p className="text-gray-600">
-              Describe what you need help with, set your budget, and choose a location.
+              {t('description')}
             </p>
           </div>
           
@@ -125,9 +127,9 @@ const Home: React.FC = () => {
             <div className="h-16 w-16 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center">
               <span className="text-blue-600 text-2xl font-bold">2</span>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Get Offers</h3>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">{t('makeOffer')}</h3>
             <p className="text-gray-600">
-              Receive responses from qualified helpers in your area ready to assist.
+              {t('description')}
             </p>
           </div>
           
@@ -135,9 +137,9 @@ const Home: React.FC = () => {
             <div className="h-16 w-16 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center">
               <span className="text-blue-600 text-2xl font-bold">3</span>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Get It Done</h3>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">{t('completed')}</h3>
             <p className="text-gray-600">
-              Choose a helper, get your task completed, and pay securely through the platform.
+              {t('description')}
             </p>
           </div>
         </div>
@@ -145,7 +147,7 @@ const Home: React.FC = () => {
       
       {/* Testimonials Section */}
       <section>
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">What People Are Saying</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('testimonials')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm p-6">

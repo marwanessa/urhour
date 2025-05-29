@@ -39,6 +39,7 @@ export const translations = {
     deleteTask: 'Delete Task',
 
     // Categories
+    popularCategories: 'Popular Categories',
     cleaning: 'Cleaning',
     delivery: 'Delivery',
     handyman: 'Handyman',
@@ -55,13 +56,18 @@ export const translations = {
 
     // Common Actions
     search: 'Search',
-    filter: 'Filter',
+    searchTasks: 'Search for tasks in your area',
+    filter: 'Filters',
     sort: 'Sort',
     save: 'Save',
     cancel: 'Cancel',
     edit: 'Edit',
     delete: 'Delete',
     back: 'Back',
+
+    // Sections
+    howItWorks: 'How It Works',
+    testimonials: 'What People Are Saying',
 
     // Messages
     noTasks: 'No tasks found',
@@ -107,6 +113,7 @@ export const translations = {
     deleteTask: 'حذف المهمة',
 
     // Categories
+    popularCategories: 'الفئات الشائعة',
     cleaning: 'تنظيف',
     delivery: 'توصيل',
     handyman: 'صيانة',
@@ -123,13 +130,18 @@ export const translations = {
 
     // Common Actions
     search: 'بحث',
-    filter: 'تصفية',
+    searchTasks: 'ابحث عن المهام في منطقتك',
+    filter: 'الفلاتر',
     sort: 'ترتيب',
     save: 'حفظ',
     cancel: 'إلغاء',
     edit: 'تعديل',
     delete: 'حذف',
     back: 'رجوع',
+
+    // Sections
+    howItWorks: 'كيف تعمل',
+    testimonials: 'آراء المستخدمين',
 
     // Messages
     noTasks: 'لم يتم العثور على مهام',
